@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Elliott 803 Simulation - Telecode</title>
+</head>
+<body>
+<table border="2" frame="box" rules="none" cellpadding="10" width="100%">
+<tr align="center"><td><img src="image/e803.gif" alt="Elliott 803"/></td></tr>
+</table>
+<h1>Elliott Telecode</h1>
+<p>Programs for the Elliott 803 were input using paper tape.
+The tapes were prepared off-line using teletype machines rather
+like these:</p>
+<center><img src="image/creed.jpg" alt="Teleprinter"/></center>
+<p>Tapes were normally 5-hole which means 32 characters could be
+encoded.
+Character 0 was blank tape (or &quot;runout&quot;) so that didn't
+really count, which left just 31 for the character set.
+31 characters is not enough for even the uppercase letters and numbers
+so a shift system was used.
+One character (31) was the <i>letter-shift</i> and another (27) was
+the <i>figure-shift</i>.
+The tapes encoded letters following the <i>letter-shift</i> and
+numbers and a handful of symbols following the <i>figure-shift</i>.
+Only one shift was needed for any sequence of letters or figures,
+although extra (redundant) shifts were harmless.
+Sometimes errors in tapes could be corrected or patched up by
+over-typing letter-shifts (character 31 or &quot;all holes&quot;) over
+unwanted characters.</p>
+<hr>
+<h2>Telecode Character Set</h2>
+<p>The 5 hole tape encoding used was unique to Elliotts.
+It consisted of the following characters:</p>
+<table frame="box" rules="all" cellpadding="4" bordercolor="#00B000">
+<tr align="center"><td></td>
+<th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th>
+<th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th>
+<th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th>
+<th>24</th><th>25</th><th>26</th><th>27</th><th>28</th><th>29</th><th>30</th><th>31</th>
+</tr>
+<tr align="center"><td><b>LS</b></td>
+<td><i>BL</i></td>
+<td>A</td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td><td>G</td><td>H</td><td>I</td>
+<td>J</td><td>K</td><td>L</td><td>M</td><td>N</td><td>O</td><td>P</td><td>Q</td><td>R</td>
+<td>S</td><td>T</td><td>U</td><td>V</td><td>W</td><td>X</td><td>Y</td><td>Z</td>
+<td><i>FS</i></td><td><i>SP</i></td><td><i>CR</i></td><td><i>LF</i></td><td><i>LS</i></td>
+</tr>
+<tr align="center"><td><b>FS</b></td>
+<td><i>BL</i></td>
+<td>1</td><td>2</td><td>*</td><td>4</td><td>$</td><td>=</td><td>7</td><td>8</td><td>'</td>
+<td>,</td><td>+</td><td>:</td><td>-</td><td>.</td><td>%</td><td>0</td><td>(</td><td>)</td>
+<td>3</td><td>?</td><td>5</td><td>6</td><td>/</td><td>@</td><td>9</td><td>&pound;</td>
+<td><i>FS</i></td><td><i>SP</i></td><td><i>CR</i></td><td><i>LF</i></td><td><i>LS</i></td>
+</tr>
+<tr bgcolor="#00B000" align="center">
+<td><img src="image/tc00.png"></td><td><img src="image/tc00.png"></td>
+<td><img src="image/tc01.png"></td><td><img src="image/tc02.png"></td><td><img src="image/tc03.png"></td>
+<td><img src="image/tc04.png"></td><td><img src="image/tc05.png"></td><td><img src="image/tc06.png"></td>
+<td><img src="image/tc07.png"></td><td><img src="image/tc08.png"></td><td><img src="image/tc09.png"></td>
+<td><img src="image/tc10.png"></td><td><img src="image/tc11.png"></td><td><img src="image/tc12.png"></td>
+<td><img src="image/tc13.png"></td><td><img src="image/tc14.png"></td><td><img src="image/tc15.png"></td>
+<td><img src="image/tc16.png"></td><td><img src="image/tc17.png"></td><td><img src="image/tc18.png"></td>
+<td><img src="image/tc19.png"></td><td><img src="image/tc20.png"></td><td><img src="image/tc21.png"></td>
+<td><img src="image/tc22.png"></td><td><img src="image/tc23.png"></td><td><img src="image/tc24.png"></td>
+<td><img src="image/tc25.png"></td><td><img src="image/tc26.png"></td><td><img src="image/tc27.png"></td>
+<td><img src="image/tc28.png"></td><td><img src="image/tc29.png"></td><td><img src="image/tc30.png"></td>
+<td><img src="image/tc31.png"></td>
+</tr>
+</table>
+<br><table frame="void" rules="none">
+<tr><td>BL</td><td><i>Blank tape</i></td></tr>
+<tr><td>FS</td><td><i>Figure shift</i></td></tr>
+<tr><td>SP</td><td>Space</td></tr>
+<tr><td>CR</td><td>Carriage Return</td></tr>
+<tr><td>LF</td><td>Line Feed</td></tr>
+<tr><td>LS</td><td><i>Letter shift</i></td></tr>
+</table>
+<hr>
+<h2 id="tcconv">Telecode to Java Character Conversion</h2>
+<p>In a number of places the simulator needs to convert between the standard Java 
+system characters and the Elliott telecode characters.
+This is done using some common conversion methods that convert according to the
+following rules.</p>
+<h3>Telecode To Java</h3>
+<p>Converting from telecode to Java is straight-forward since the small number of 
+characters present in the telecode character set all convert easily to Java
+unicode characters.</p>
+<p>The only character that might cause any issues is the telecode figure-shift 26
+character which should be the GB currency pound sign (<code>&pound;</code>).
+Since some character sets may not display this correctly most of the programs
+that perform telecode-to-Java conversion can take an option to force use of 
+only the basic US-ASCII codeset.  
+In this case the telecode figure-shift character 26 will be displayed as the
+number sign (<code>#</code>).</p>
+<h3 id="jtotc">Java to Telecode</h3>
+<p>When converting from Java telecode it makes sense to allow a fairly liberal
+conversion of characters.
+In particular:</p>
+<ul compact>
+<li>All uppercase and lowercase letters 'A' to 'Z' are converted to the telecode 
+uppercase versions.</li>
+<li>Both <b><code>$</code></b> and <b><code>&amp;</code></b> convert to figure-shift 5 
+(some real teletypes used &amp; for this character).</li>
+<li>Both <b><code>'</code></b> and <b><code>;</code></b> convert to figure-shift 9 
+(helps when writing Algol).</li>
+<li>Both <b><code>(</code></b> and <b><code>[</code></b> convert to figure-shift 17 
+(helps when writing Algol).</li>
+<li>Both <b><code>)</code></b> and <b><code>]</code></b> convert to figure-shift 18 
+(helps when writing Algol).</li>
+<li>Both <b><code>?</code></b> and <b><code>!</code></b> convert to figure-shift 20.</li>
+<li>Both <b><code>/</code></b> and <b><code>\</code></b> convert to figure-shift 23.</li>
+<li>Both <b><code>&pound;</code></b> and <b><code>#</code></b> convert to figure-shift 26
+(helps on systems without a GB pound sign on the keyboard).</li>
+<li>The character <b><code>_</code></b> can be used to represent a blank character 
+(tape run-out) if required.  
+</ul>
+<p>All other characters are silently ignored.</p>
+<br><table border="1" frame="above" rules="none" width="100%">
+<tr><td align="left">Tim Baldwin<br>December 2013
+<br><a href="mailto:tjb803@tinymail.co.uk">tjb803@tinymail.co.uk</a></td>
+<td align="right">Return to <a href="index.html">index</a>
+<br><br>&copy; Tim Baldwin 2009,2013</td></tr>
+</table>
+</body>
+</html>
